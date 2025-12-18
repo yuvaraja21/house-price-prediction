@@ -1,0 +1,33 @@
+[project]
+name = "regression-e2e"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "boto3>=1.42.5",
+    "category-encoders>=2.9.0",
+    "evidently>=0.7.17",
+    "fastapi>=0.124.0",
+    "great-expectations>=1.9.2",
+    "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.8",
+    "jupyter-client>=8.7.0",
+    "jupyter-server>=2.17.0",
+    "lightgbm>=4.6.0",
+    "matplotlib>=3.10.7",
+    "mlflow>=3.7.0",
+    "nbformat>=5.10.4",
+    "notebook>=7.5.0",
+    "numpy>=2.3.5",
+    "optuna>=4.6.0",
+    "pandas>=2.3.3",
+    "pytest>=9.0.2",
+    "pyzmq>=27.1.0",
+    "scikit-learn>=1.7.2",
+    "seaborn>=0.13.2",
+    "streamlit>=1.52.1",
+    "tornado>=6.5.2",
+    "traitlets>=5.14.3",
+    "xgboost>=3.1.2",
+]
