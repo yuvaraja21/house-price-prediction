@@ -8,10 +8,9 @@ from pathlib import Path
 # ============================
 # Config
 # ============================
-API_URL = os.environ.get("API_URL")
-
-S3_BUCKET = os.getenv("S3_BUCKET", "ml-housing-regression")
-REGION = os.getenv("AWS_REGION", "eu-north-1")
+API_URL = os.environ.get("API_URL", "http://127.0.0.1:8000/predict")
+S3_BUCKET = os.getenv("S3_BUCKET", "housing-regression-data")
+REGION = os.getenv("AWS_REGION", "eu-west-2")
 
 s3 = boto3.client("s3", region_name=REGION)
 
@@ -62,7 +61,7 @@ fe_df, disp_df = load_data()
 # ============================
 # UI
 # ============================
-st.title("Housing Price Prediction — Holdout Explorer")
+st.title("🏠 Housing Price Prediction — Holdout Explorer")
 
 years = sorted(disp_df["year"].unique())
 months = list(range(1, 13))
@@ -76,7 +75,7 @@ with col2:
 with col3:
     region = st.selectbox("Select Region", regions, index=0)
 
-if st.button("Show Predictions"):
+if st.button("Show Predictions 🚀"):
     mask = (disp_df["year"] == year) & (disp_df["month"] == month)
     if region != "All":
         mask &= (disp_df["region"] == region)
