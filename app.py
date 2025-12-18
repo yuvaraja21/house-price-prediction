@@ -8,7 +8,10 @@ from pathlib import Path
 # ============================
 # Config
 # ============================
-API_URL = os.environ.get("API_URL", "http://127.0.0.1:8000/predict")
+API_URL = os.environ.get(
+    "API_URL",
+    "http://housing-api-service:8000/predict"
+)
 S3_BUCKET = os.getenv("S3_BUCKET", "ml-housing-regression")
 REGION = os.getenv("AWS_REGION", "eu-north-1")
 
