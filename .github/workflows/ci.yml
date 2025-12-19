@@ -22,43 +22,43 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       # Build and push housing-api image
-      - name: Build, Tag, and Push housing-api
-        run: |
-          IMAGE_TAG=${GITHUB_SHA}
-          ECR_REGISTRY=440913953032.dkr.ecr.eu-north-1.amazonaws.com
-          ECR_REPOSITORY=housing-api
+      # - name: Build, Tag, and Push housing-api
+      #   run: |
+      #     IMAGE_TAG=${GITHUB_SHA}
+      #     ECR_REGISTRY=440913953032.dkr.ecr.eu-north-1.amazonaws.com
+      #     ECR_REPOSITORY=housing-api
 
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      #     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
+      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+      #     docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
+      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
       # Build and push housing-streamlit image
-      - name: Build, Tag, and Push housing-streamlit
-        run: |
-          IMAGE_TAG=${GITHUB_SHA}
-          ECR_REGISTRY=440913953032.dkr.ecr.eu-north-1.amazonaws.com
-          ECR_REPOSITORY=housing-streamlit
+      # - name: Build, Tag, and Push housing-streamlit
+      #   run: |
+      #     IMAGE_TAG=${GITHUB_SHA}
+      #     ECR_REGISTRY=440913953032.dkr.ecr.eu-north-1.amazonaws.com
+      #     ECR_REPOSITORY=housing-streamlit
 
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile.streamlit .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      #     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile.streamlit .
+      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+      #     docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
+      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
       # Deploy to ECS - API
-      - name: Deploy housing-api-service
-        run: |
-          aws ecs update-service \
-            --cluster housing-api-cluster-ecs \
-            --service housing-api-service \
-            --force-new-deployment
+      # - name: Deploy housing-api-service
+      #   run: |
+      #     aws ecs update-service \
+      #       --cluster housing-api-cluster-ecs \
+      #       --service housing-api-service \
+      #       --force-new-deployment
 
-      # Deploy to ECS - Streamlit
-      - name: Deploy housing-streamlit-service
-        run: |
-          aws ecs update-service \
-            --cluster housing-api-cluster-ecs \
-            --service housing-streamlit-service \
-            --force-new-deployment
+      # # Deploy to ECS - Streamlit
+      # - name: Deploy housing-streamlit-service
+      #   run: |
+      #     aws ecs update-service \
+      #       --cluster housing-api-cluster-ecs \
+      #       --service housing-streamlit-service \
+      #       --force-new-deployment
