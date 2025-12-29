@@ -24,9 +24,6 @@ The codebase is organized into distinct pipelines following the flow:
 - **`src/inference_pipeline/`**: Production inference
   - `inference.py`: Applies same preprocessing/encoding transformations using saved encoders
 
-- **`src/batch/`**: Batch prediction processing
-  - `run_monthly.py`: Generates monthly predictions on holdout data
-
 - **`src/api/`**: FastAPI web service
   - `main.py`: REST API with S3 integration, health checks, prediction endpoints, and batch processing
 
@@ -104,9 +101,6 @@ python src/training_pipeline/eval.py
 
 # Single inference
 python src/inference_pipeline/inference.py --input data/raw/holdout.csv --output predictions.csv
-
-# Batch monthly predictions
-python src/batch/run_monthly.py
 
 ### API Service
 
